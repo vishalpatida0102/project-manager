@@ -16,11 +16,24 @@ const allowedOrigins = (process.env.CLIENT_ORIGINS || '')
   .map((s) => s.trim())
   .filter(Boolean);
 
+// Supports exact origins and `*.domain.tld` wildcard rules (handy for Vercel previews).
+function originAllowed(origin) {
+  if (allowedOrigins.length === 0 || allowedOrigins.includes('*')) return true;
+  return allowedOrigins.some((rule) => {
+    if (rule === origin) return true;
+    if (rule.startsWith('*.')) {
+      const suffix = rule.slice(1); // ".vercel.app"
+      return origin.endsWith(suffix);
+    }
+    return false;
+  });
+}
+
 app.use(
   cors({
     origin(origin, cb) {
       if (!origin) return cb(null, true);
-      if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) return cb(null, true);
+      if (originAllowed(origin)) return cb(null, true);
       return cb(new Error(`CORS: origin ${origin} not allowed`));
     },
     credentials: true,
