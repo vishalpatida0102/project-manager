@@ -41,8 +41,10 @@ export default function RegisterPage() {
         <span className="text-base font-bold tracking-tight">Stride</span>
       </div>
 
-      <h2 className="text-2xl font-bold tracking-tight">Create your workspace</h2>
-      <p className="text-muted-foreground mt-1">The first user becomes the admin automatically.</p>
+      <h2 className="text-2xl font-bold tracking-tight">Create your account</h2>
+      <p className="text-muted-foreground mt-1">
+        Join your team's workspace. New accounts start as members — an admin can promote you anytime.
+      </p>
 
       <form onSubmit={onSubmit} className="mt-8 space-y-4">
         <div>
@@ -54,7 +56,7 @@ export default function RegisterPage() {
               name="name"
               required
               minLength={2}
-              placeholder="Ada Lovelace"
+              placeholder="Your full name"
               className="pl-9"
               value={form.name}
               onChange={onChange}

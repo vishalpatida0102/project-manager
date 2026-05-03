@@ -90,9 +90,12 @@ export default function LoginPage() {
         </Link>
       </p>
 
-      <div className="mt-8 rounded-md border border-dashed border-border p-3 text-xs text-muted-foreground">
-        <strong className="font-medium text-foreground">Demo credentials:</strong> ada@example.com /
-        password123 (after running <code className="font-mono">npm run seed</code> in the backend)
+      <div className="mt-8 rounded-md border border-dashed border-border p-3 text-xs text-muted-foreground space-y-1">
+        <p>
+          <strong className="font-medium text-foreground">Admin demo:</strong>{' '}
+          <code className="font-mono">admin@stride.app</code> /{' '}
+          <code className="font-mono">Admin@Stride2026</code>
+        </p>
       </div>
     </motion.div>
   );
